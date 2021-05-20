@@ -1,10 +1,16 @@
 public class Main {
-    public static void main(String[] args) {
-        int ticketCost = 300_000; //Стоимость билета
-        int costPerMile = 20; // стоимость одной бонусной мили
-        int totalMiles = ticketCost / costPerMile; // Мили за купленный билет
-        System.out.println("Total Miles:");
-        System.out.println(totalMiles);
+        public static void main(String[] args) {
+            BonusMilesService service = new BonusMilesService();
+            int miles = service.calculate (20, 10_000);
+            System.out.println(miles);
 
+            int milesForZeroPrice = service.calculate (20, 0);
+            System.out.println(milesForZeroPrice);
+
+            int milesForMinusPrice = service.calculate (20, -1_000_000);
+            System.out.println(milesForMinusPrice);
+
+            int milesForEqualPrice = service.calculate (20, 20);
+            System.out.println(milesForEqualPrice);
+        }
     }
-}
